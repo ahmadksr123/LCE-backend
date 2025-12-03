@@ -9,6 +9,8 @@ import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/auth.js";
 import meetingRoutes from "./routes/meeting.js";
 import signupRouter from "./routes/signUp.js";
+import doorRouter from "./routes/door.js";
+
 
 
 dotenv.config();
@@ -37,6 +39,8 @@ app.use(rateLimit({
 app.use("/api/auth", authRoutes);
 app.use("/api/meetings", meetingRoutes);
 app.use("/api/signup", signupRouter);
+app.use("/api/door", doorRouter);
+
 
 
 app.get("/", (req, res) => res.json({ status: "ok" }));
