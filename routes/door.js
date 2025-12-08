@@ -16,17 +16,13 @@ const ROOM_MAP = {
   5: "Room E",
   6: "Room F",
   7: "Room G",
-  8: "Room H"
+  8: "Room H",
+  9: "Room I",
+  10: "Room J"    
 };
 
-// Reverse (optional, if ever needed)
-// const ROOM_NAME_TO_ID = Object.fromEntries(
-//   Object.entries(ROOM_MAP).map(([id, name]) => [name, Number(id)])
-// );
-
-// URL:
-// POST /door/validate/:cardID/:roomId
-router.post("/validate/:cardID/:roomId", async (req, res) => {
+// GET /door/validate/:cardID/:roomId
+router.get("/validate/:cardID/:roomId", async (req, res) => {
   try {
     const { cardID, roomId } = req.params;
 
@@ -68,7 +64,7 @@ router.post("/validate/:cardID/:roomId", async (req, res) => {
     await ScanHistory.create({
       userId: user?._id || null,
       cardID,
-      roomId: roomName, // storing room name
+      roomId: roomName,
       success: allow,
       message
     });
